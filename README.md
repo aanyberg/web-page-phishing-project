@@ -78,6 +78,6 @@ SELECT
 FROM
     web_page_fishing as wpf
 INNER JOIN
-    phishing_dataset pd ON wpd.unique_id = pd.unique_id;
+    phishing_dataset pd ON wpf.unique_id = pd.unique_id;
 ```
 
