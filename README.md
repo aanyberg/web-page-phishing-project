@@ -35,20 +35,49 @@ phishing_dataset:
 ```
 
 
-## Questions
+## Q & A
 
 <ul>
-  <li>What SQL code would you write to query all of the data contained in the provided dataset?<li>
   <li>Which field(s) has/have the strongest correlation with the “phishing” field?  Which field(s) has/have the weakest correlation with the “phishing” field?</li>
+  <p>The fields that have the strongest correaltion to the phishing field is n_slash and url_length.</p>
   <li>Would you say that the URL length is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</li>
+  <p>According to the supplied data there is a strong indicator that a longer URL would be phishing. Another factor is that a longer URL containing more slashes than normal would indicate a phishing attempt. This conclusion is based of off the correlation of these fields. The correlation between the "phishing" field and "n_slash" and "url_length" is 0.611472 and 0.430125 respectively. That being said, there could be phishing attempts with that uses a shorter URL with fewer slashes in it.</p>
   <li>Would you say the number of redirections is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</li>
   <li>Based on your analysis, what advice would you give to others for deciphering whether or not a URL is phishing?</li>
 </ul>
 
 ## SQL Query
-```
+The SQL code to query all information in the two simulated tables web_page_fishing and phishing_dataset.
+```sql
 SELECT
+    wpf.unique_id,
+    wpf.url_length,
+    wpf.n_redirection,
+    wpf.phishing,
+    pd.unique_id,
+    pd.n_dots,
+    pd.n_hyphens,
+    pd.n_underline,
+    pd.n_slash,
+    pd.n_questionmark,
+    pd.n_equal,
+    pd.n_at,
+    pd.n_and,
+    pd.n_exclamation,
+    pd.n_space,
+    pd.n_tilde,
+    pd.n_comma,
+    pd.n_plus,
+    pd.n_asterisk,
+    pd.n_hashtag,
+    pd.n_dollar,
+    pd.n_percent
 
+FROM
+    web_page_fishing as wpf
+INNER JOIN
+    phishing_dataset pd ON wpd.unique_id = pd.unique_id;
+```
 
 
 ## Contributing
