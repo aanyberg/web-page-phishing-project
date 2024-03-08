@@ -38,12 +38,14 @@ phishing_dataset:
 ## Q & A
 
 <ul>
-  <li>Which field(s) has/have the strongest correlation with the “phishing” field?  Which field(s) has/have the weakest correlation with the “phishing” field?</li>
-  <p>The fields that have the strongest correaltion to the phishing field is n_slash and url_length.</p>
-  <li>Would you say that the URL length is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</li>
-  <p>According to the supplied data there is a strong indicator that a longer URL would be phishing. Another factor is that a longer URL containing more slashes than normal would indicate a phishing attempt. This conclusion is based of off the correlation of these fields. The correlation between the "phishing" field and "n_slash" and "url_length" is 0.611472 and 0.430125 respectively. That being said, there could be phishing attempts with that uses a shorter URL with fewer slashes in it.</p>
-  <li>Would you say the number of redirections is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</li>
-  <li>Based on your analysis, what advice would you give to others for deciphering whether or not a URL is phishing?</li>
+  <li><strong>Which field(s) has/have the strongest correlation with the “phishing” field?  Which field(s) has/have the weakest correlation with the “phishing” field?</strong></li>
+  <p>- The fields that have the strongest correaltion to the phishing field is n_slash and url_length.</p>
+  <li><strong>Would you say that the URL length is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</strong></li>
+  <p>- According to the supplied data there is a strong indicator that a longer URL would be phishing. Another factor is that a longer URL containing more slashes than normal would indicate a phishing attempt. This conclusion is based of off the correlation of these fields. The correlation between the "phishing" field and "n_slash" and "url_length" is 0.611472 and 0.430125 respectively. That being said, there could be phishing attempts with that uses a shorter URL with fewer slashes in it.</p>
+  <li><strong>Would you say the number of redirections is a strong indicator of whether or not the URL is phishing?  Why or why not?  What metrics do you have to support your answer?</strong></li>
+  <p>Based on the correlation data the indication is that there is next to no correlation between the phishing attempts and the number of redirections. The correlation between "phishing" and "n_redirection" is: -0.050822. This is a bit contraintuititve because one would expect more redirections with a phishing attempt to hide the end destination, based on this the redirects alone isn't a strong indicator of a phishing attempt.</p>
+  <li><strong>Based on your analysis, what advice would you give to others for deciphering whether or not a URL is phishing?</strong></li>
+  <p>My advice would be to not look at each of these factors in isolation, mainly because the amount of redirects in this data shows very low correlation between the phishing attempts and that the URLs in this data of longer nature, something that isn't always true. In my opinion there is a few other factors that should be considered, such as the existence of SSL certificates, spelling errors in the URL and the context in which the URL was received.</p>
 </ul>
 
 ## SQL Query
@@ -79,11 +81,3 @@ INNER JOIN
     phishing_dataset pd ON wpd.unique_id = pd.unique_id;
 ```
 
-
-## Contributing
-
-Guidelines on how others can contribute to your project.
-
-## License
-
-Information about the license of your project.
